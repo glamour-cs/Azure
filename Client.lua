@@ -75,8 +75,8 @@ iris:Connect(function()
 	local windowSizeSub = iris.State(Vector2.new(300, 200))
 
 	iris.Window({menuName}, {size = windowSize})
-	iris.Text({`{version} | DEV`})
-	if iris.Button({`{showEditor and "Close" or "Open"} Player Editor`}).clicked() then
+	iris.Text({"v1.0 | DEV"})
+	if iris.Button({(showEditor and "Close" or "Open").. " Player Editor"}).clicked() then
 		showEditor = not showEditor
 	end
 	for _, action in next,actions do
