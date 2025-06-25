@@ -91,7 +91,7 @@ iris:Connect(function()
 	
 	if showEditor then
 		iris.Window({'Player Editor'}, {size = windowSizeEditor})
-		if iris.Button({`Select Player`}).clicked() then
+		if iris.Button({"Select Player"}).clicked() then
 			showPlayers = not showPlayers
 		end
 		if showPlayers then
@@ -103,7 +103,7 @@ iris:Connect(function()
 			end
 		end
 		local target = players:GetPlayers()[math.clamp(selectedPlayer:get(),1,#players:GetPlayers())]
-		iris.Text({`Target: <b>{target}</b>`})
+		iris.Text({"Target: <b>".. target.Name .. "</b>"})
 		iris.SliderNum({"Walk Speed"})
 		iris.SliderNum({"Jump Power"})
 		iris.SliderNum({"Hip Height"})
@@ -116,7 +116,7 @@ iris:Connect(function()
 			g.client.tell(mainRemote, { 'increment_wins', target, -wins })
 		end
 		
-		iris.Text({`<b>Unlockables</b>`})
+		iris.Text({"<b>Unlockables</b>"})
 		for _, action in next,unlockables do
 			action.Delay = action.Delay - dt
 			local visible = true
@@ -133,7 +133,7 @@ iris:Connect(function()
 		if iris.Button({"Show Styles"}).clicked() then
 			showStyles = not showStyles
 		end
-		iris.Text({`<b>Fun</b>`})
+		iris.Text({"<b>Fun</b>"})
 		for _, action in next,fun do
 			action.Delay = action.Delay - dt
 			if iris.Button({action.Name}).clicked() and action.Delay <= 0 then
@@ -158,12 +158,12 @@ iris:Connect(function()
 				end
 			end
 			currentPage = iris.InputNum({"Page", 1}).state.number.value
-			iris.Text({`<b>Style: {all_styles[selectedStyle:get()]}</b>`})
+			iris.Text({"<b>Style: ".. all_styles[selectedStyle:get()].. "</b>"})
 			if iris.Button({"Give Style"}).clicked() then
-				notification { title = menuName, text = `Gave {target.Name} the {all_styles[selectedStyle:get()]} style!` }
+				notification { title = menuName, text = "Gave ".. target.Name.. " the ".. all_styles[selectedStyle:get()].. " style!" }
 			end
 			if iris.Button({"<b>Remove</b> Style"}).clicked() then
-				notification { title = menuName, text = `Gave {target.Name} the {all_styles[selectedStyle:get()]} style!` }
+				notification { title = menuName, text = "Gave ".. target.Name.. " the ".. all_styles[selectedStyle:get()].. " style!" }
 			end
 			iris.End()
 		end
